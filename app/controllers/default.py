@@ -33,10 +33,11 @@ def enviar():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
-        nome = request.form['nome']
-        senha = request.form['senha']
+        nome = request.form['nome'].strip().lower()
+        senha = request.form['senha'].strip()
+        nivel_acesso = request.form['nivel-acesso']
 
-        user = User(nome=nome, senha=senha)
+        user = User(nome=nome, senha=senha, nivel_acesso=nivel_acesso)
         db.session.add(user)
         db.session.commit()
 
