@@ -1,12 +1,10 @@
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
+from flask import render_template, request
 from Lib.autentificacao import client
-from models.usuarios import User
+from app.models.usuarios import User
+from app import app
+from app import db
 import pandas as pd
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///storage.db'
-db = SQLAlchemy(app)
 spreadsheets = client('credentials.json')
 
 
@@ -45,10 +43,11 @@ def cadastro():
     return render_template('cadastro.html')
 
 
-@app.route('/teste/<nome>')
-def teste(nome):
-    nome = User.query.filer_by(nome=nome).first()
-    return nome
+@app.route('/teste')
+def teste():
+    nome = User.query.filter_by(nome='Leonardo').first()
+    print(nome)
+    return 'lol'
 
 
 if __name__ == '__main__':
