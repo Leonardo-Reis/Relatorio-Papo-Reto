@@ -45,7 +45,7 @@ def cadastro():
 
 @app.route('/teste')
 def teste():
-    nome = User.query.filter_by(nome='Leonardo').first()
+    nome = User.query.filter_by(nome='leonardo').first()
     print(nome)
     return 'lol'
 

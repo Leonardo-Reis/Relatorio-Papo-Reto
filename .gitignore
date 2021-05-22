@@ -2,3 +2,4 @@ venv
 storage.db
 credentials.json
 .idea
+__pycache__
