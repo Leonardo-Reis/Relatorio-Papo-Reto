@@ -4,24 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app/static/index.css">
+    <link rel="stylesheet" href="../static/index.css">
     <title>Login</title>
 </head>
 <body>
+    {% block content %}
     <div class="main">
         <form method="post">
             <h1>Login</h1>
             <div class="input">
                 <label>Nome</label>
-                <input type="text" name="nome" autocomplete="off">
+                <input type="text" name="nome" autocomplete="off" value="{{ session['nome'] if session}}">
             </div>
             <div class="input">
                 <label>Senha</label>
-                <input type="password" name="senha">
+                <input type="password" name="senha" value="{{ session['senha'] if session }}">
             </div>
             <div class="submit">
                 <input type="submit" value="Login">
             </div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for msg in messages %}
+                            <p>{{msg}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            {% endblock %}
         </form>
     </div>
 </body>

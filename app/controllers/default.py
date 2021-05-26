@@ -1,6 +1,5 @@
-from app import app
-from app import db
-from flask import request, render_template
+from app import app, db
+from flask import request, render_template, session, redirect, url_for, flash
 from Lib.autentificacao import client
 from app.models.usuarios import User
 import pandas as pd
@@ -10,6 +9,19 @@ spreadsheets = client('credentials.json')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        nome = request.form['nome'].lower().strip()
+        senha = request.form['senha'].strip()
+        check_nome = User.query.filter_by(nome=nome).first()
+        if check_nome:
+            if check_nome.senha == senha:
+                session['nome'] = nome
+                session['senha'] = senha
+                return redirect(url_for('usuario'))
+            else:
+                flash('Senha incorreta')
+        else:
+            flash('Usuario não encontrado')
     return render_template('index.html')
 
 
@@ -32,20 +44,24 @@ def enviar():
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    if request.method == 'POST':
-        nome = request.form['nome'].strip().lower()
-        senha = request.form['senha'].strip()
-        nivel_acesso = request.form['nivel-acesso']
+    if session:
+        if request.method == 'POST':
+            nome = request.form['nome'].strip().lower()
+            senha = request.form['senha'].strip()
+            nivel_acesso = request.form['nivel-acesso']
 
-        user = User(nome=nome, senha=senha, nivel_acesso=nivel_acesso)
-        db.session.add(user)
-        db.session.commit()
+            user = User(nome=nome, senha=senha, nivel_acesso=nivel_acesso)
+            db.session.add(user)
+            db.session.commit()
 
-    return render_template('cadastro.html')
+        return render_template('cadastro.html')
+    else:
+        return redirect(url_for('index'))
 
 
-@app.route('/teste')
-def teste():
-    nome = User.query.filter_by(nome='leonardo').first()
-    print(nome)
-    return 'lol'
+@app.route('/usuario')
+def usuario():
+    if session:
+        return render_template('usuario.html')
+    else:
+        return redirect(url_for('index'))
