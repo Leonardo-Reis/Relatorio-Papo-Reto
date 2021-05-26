@@ -3,3 +3,5 @@ storage.db
 credentials.json
 .idea
 __pycache__/
+*pyc
+**/__pycache__
