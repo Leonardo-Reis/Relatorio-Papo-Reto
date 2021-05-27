@@ -65,3 +65,11 @@ def usuario():
         return render_template('usuario.html')
     else:
         return redirect(url_for('index'))
+
+
+@app.route('/usuario/novomembro', methods=['GET', 'POST'])
+def novomembro():
+    if session:
+        return render_template('novomembro.html')
+    else:
+        return redirect(url_for('index'))
