@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    background-color: rgb(218, 218, 218);
+}
+
+main {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    text-align: center;
+    margin: 15% auto;
+    border: solid 1px;
+
+}
+
+.titulo {
+    margin: 15px;
+}
+
+.opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.opcao {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(187, 187, 187);
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    padding: 5px;
+    font-size: large;
+    transition: .25s;
+}
+
+.opcao p:hover {
+    color: blue;
+    transition: .25s;
+}

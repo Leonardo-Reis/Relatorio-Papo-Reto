@@ -4,9 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/usuario.css">
     <title>Usuario</title>
 </head>
 <body>
-    
+    {% block content %}
+    <main>
+        <div class="titulo">
+            <h1>Seja bem vindo, {{session["nome"] if session}}!</h1>
+        </div>
+        <div class="opcoes">
+            <a href="/cadastro">
+                <div class="opcao">
+                    <p>Cadastrar novo lider de grupo</p>
+                </div>
+            </a>
+            <a href="#">
+                <div class="opcao">
+                    <p>Ver o seu pequeno grupo</p>
+                </div>
+            </a>
+        </div>
+    </main>
+    {% endblock %}
 </body>
 </html>
