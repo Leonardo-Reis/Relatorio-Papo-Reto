@@ -23,13 +23,14 @@ class Grupo(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=False)
+    sobrenome = db.Column(db.String(50), unique=False)
     lider_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    lider = db.relatio
-    nship('User', foreign_keys=lider_id)
+    lider = db.relationship('User', foreign_keys=lider_id)
 
-    def __init__(self, nome, lider_id):
+    def __init__(self, nome, sobrenome, lider_id):
         self.nome = nome
+        self.sobrenome = sobrenome
         self.lider_id = lider_id
 
     def __repr__(self):
