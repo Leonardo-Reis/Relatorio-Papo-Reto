@@ -2,12 +2,11 @@ from app import db
 
 
 class User(db.Model):
-    __tablename__ = 'users'
-
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=True)
     senha = db.Column(db.String)
     nivel_acesso = db.Column(db.Integer)
+    monitorados = db.relationship('Grupo', backref='user', lazy=True)
 
     def __init__(self, nome, senha, nivel_acesso):
         self.nome = nome
@@ -19,14 +18,10 @@ class User(db.Model):
 
 
 class Grupo(db.Model):
-    __tablename__ = 'grupo'
-
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=False)
-    sobrenome = db.Column(db.String(50), unique=False)
-    lider_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-    lider = db.relationship('User', foreign_keys=lider_id)
+    sobrenome = db.Column(db.String(40), unique=False)
+    lider_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __init__(self, nome, sobrenome, lider_id):
         self.nome = nome
@@ -34,4 +29,4 @@ class Grupo(db.Model):
         self.lider_id = lider_id
 
     def __repr__(self):
-        return f"<Grupo {self.lider.nome}>"
+        return f"<Grupo {self.lider_id}>"

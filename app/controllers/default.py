@@ -70,6 +70,26 @@ def novomembro():
         return redirect(url_for('index'))
 
 
+@app.route('/usuario/grupo')
+def grupo():
+    if session:
+        usuario = User.query.filter_by(nome=session['nome']).first()
+
+        for carinha in usuario.monitorados:
+            print(carinha.nome)
+
+        return 'lol'
+
+
+@app.route('/logout')
+def logout():
+    if session:
+        session.clear()
+        return 'logout'
+    else:
+        return redirect(url_for('index'))
+
+
 @app.route('/enviar', methods=['GET', 'POST'])
 def enviar():
     if request.method == 'POST':
@@ -85,3 +105,16 @@ def enviar():
 
         ws_nomes_pprt.update([df.columns.values.tolist()] + df.values.tolist())
     return render_template('enviar.html')
+
+
+@app.route('/cadastro-forcado', methods=['POST', 'GET'])
+def forcado():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        senha = request.form['senha']
+        nivel_acesso = request.form['nivel-acesso']
+
+        user = User(nome=nome, senha=senha, nivel_acesso=nivel_acesso)
+        db.session.add(user)
+        db.session.commit()
+    return render_template('forcado.html')
