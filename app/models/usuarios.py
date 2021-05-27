@@ -23,10 +23,11 @@ class Grupo(db.Model):
     sobrenome = db.Column(db.String(40), unique=False)
     lider_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-    def __init__(self, nome, sobrenome, lider_id):
+    def __init__(self, nome, sobrenome, lider_id, lider_nome):
         self.nome = nome
         self.sobrenome = sobrenome
         self.lider_id = lider_id
+        self.lider_nome = lider_nome
 
     def __repr__(self):
         return f"<Grupo {self.lider_id}>"

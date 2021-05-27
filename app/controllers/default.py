@@ -56,9 +56,12 @@ def novomembro():
         if request.method == 'POST':
             nome = request.form['nome'].strip().lower()
             sobrenome = request.form['sobrenome'].strip().lower()
-            lider_id = User.query.filter_by(nome=session['nome']).first().id
+            lider = User.query.filter_by(nome=session['nome']).first()
 
-            novo_membro = Grupo(nome=nome, sobrenome=sobrenome, lider_id=lider_id)
+            lider_id = lider.id
+            lider_nome = lider.nome
+
+            novo_membro = Grupo(nome=nome, sobrenome=sobrenome, lider_id=lider_id, lider_nome=lider_nome)
 
             db.session.add(novo_membro)
             db.session.commit()
@@ -78,14 +81,14 @@ def grupo():
         for carinha in usuario.monitorados:
             print(carinha.nome)
 
-        return 'lol'
+        return render_template('grupo.html', usuario=usuario)
 
 
 @app.route('/logout')
 def logout():
     if session:
         session.clear()
-        return 'logout'
+        return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
 
