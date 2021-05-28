@@ -19,7 +19,7 @@
             </thead>
             <tbody>
                 {% block content %}
-                    {% for membro in usuario.monitorados %}
+                    {% for membro in usuario.membros %}
                         <tr>
                             <td>{{membro.nome}}</td>
                             <td>{{membro.sobrenome}}</td>

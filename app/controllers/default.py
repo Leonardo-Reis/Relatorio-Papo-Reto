@@ -1,7 +1,7 @@
 from app import app, db
 from flask import request, render_template, session, redirect, url_for, flash
 from Lib.autentificacao import client
-from app.models.usuarios import User, Grupo
+from app.models.usuarios import User, Membro, Relatorio
 import pandas as pd
 
 spreadsheets = client('credentials.json')
@@ -61,7 +61,7 @@ def novomembro():
             lider_id = lider.id
             lider_nome = lider.nome
 
-            novo_membro = Grupo(nome=nome, sobrenome=sobrenome, lider_id=lider_id, lider_nome=lider_nome)
+            novo_membro = Membro(nome=nome, sobrenome=sobrenome, lider_id=lider_id, lider_nome=lider_nome)
 
             db.session.add(novo_membro)
             db.session.commit()
@@ -78,10 +78,20 @@ def grupo():
     if session:
         usuario = User.query.filter_by(nome=session['nome']).first()
 
-        for carinha in usuario.monitorados:
+        for carinha in usuario.membros:
             print(carinha.nome)
 
         return render_template('grupo.html', usuario=usuario)
+
+
+@app.route('/usuario/relatorio', methods=['POST', 'GET'])
+def relatorio():
+    if session:
+        membros = User.query.filter_by(nome=session['nome']).first().membros
+        print(membros[0].nome)
+        return render_template('relatorio.html', membros=membros)
+    else:
+        return redirect(url_for('index'))
 
 
 @app.route('/logout')
