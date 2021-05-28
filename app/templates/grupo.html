@@ -21,8 +21,8 @@
                 {% block content %}
                     {% for membro in usuario.membros %}
                         <tr>
-                            <td>{{membro.nome}}</td>
-                            <td>{{membro.sobrenome}}</td>
+                            <td>{{membro.nome.capitalize()}}</td>
+                            <td>{{membro.sobrenome.capitalize()}}</td>
                         </tr>
                     {% endfor %}
                 {% endblock %}

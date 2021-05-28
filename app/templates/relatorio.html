@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/relatorio.css">
     <title>Enviar Relatorio</title>
 </head>
 <body>
@@ -13,13 +14,17 @@
             <h1>Enviar Relatorio</h1>
         </div>
         <div class="form">
-            <form method="post">
+            <form method="post" id="form">
                 {% for membro in membros %}
                     <div class="input">
-                        <label>{{ membro.nome }}</label>
-                        <input type="text" name="{{membro.nome}}">
+                        <h2>{{ membro.nome.capitalize() }}</h2>
+                        <textarea name="{{ membro.nome }}" cols="30" rows="10" form="form"></textarea>
                     </div>
                 {% endfor %}
+                <div class="input">
+                    <label>Semana</label>
+                    <input type="number" name="semana" placeholder="1-5" max="5" min="0" style="text-align: center;">
+                </div>
                 <div class="submit">
                     <input type="submit" value="Enviar">
                 </div>

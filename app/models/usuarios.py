@@ -35,17 +35,17 @@ class Membro(db.Model):
 
 
 class Relatorio(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
     membro_nome = db.Column(db.String(40), unique=False)
-    semana = db.Column(db.Integer, primary_key=True)
+    semana = db.Column(db.Integer, unique=False)
     relatorio = db.Column(db.String(), unique=False)
     membro_id = db.Column(db.Integer, db.ForeignKey('membro.id'))
 
-    def __init__(self, membro_nome, semana, relatorio, membro_id, lider_nome):
+    def __init__(self, membro_nome, semana, relatorio, membro_id):
         self.membro_nome = membro_nome
         self.semana = semana
         self.relatorio = relatorio
         self.membro_id = membro_id
-        self.lider_nome = lider_nome
 
     def __repr__(self):
         return f"<Relatorios {self.membro_nome}>"

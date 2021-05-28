@@ -77,18 +77,25 @@ def novomembro():
 def grupo():
     if session:
         usuario = User.query.filter_by(nome=session['nome']).first()
-
-        for carinha in usuario.membros:
-            print(carinha.nome)
-
         return render_template('grupo.html', usuario=usuario)
 
 
 @app.route('/usuario/relatorio', methods=['POST', 'GET'])
 def relatorio():
     if session:
-        membros = User.query.filter_by(nome=session['nome']).first().membros
-        print(membros[0].nome)
+        lider = User.query.filter_by(nome=session['nome']).first()
+        membros = lider.membros
+        if request.method == 'POST':
+            for membro in membros:
+                nome = membro.nome
+                relatorio = request.form[f'{membro.nome}']
+                semana = int(request.form['semana'])
+
+                novo_relatorio = Relatorio(membro_nome=nome, relatorio=relatorio, semana=semana, membro_id=membro.id)
+
+                db.session.add(novo_relatorio)
+                db.session.commit()
+
         return render_template('relatorio.html', membros=membros)
     else:
         return redirect(url_for('index'))

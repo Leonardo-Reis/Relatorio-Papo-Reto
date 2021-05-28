@@ -19,7 +19,7 @@ main {
     align-items: center;
     width: 400px;
     text-align: center;
-    margin: 15% auto;
+    margin: 10% auto;
     border: solid 1px;
 
 }
@@ -44,8 +44,9 @@ main {
     height: 100px;
     margin: 20px;
     padding: 5px;
-    font-size: large;
+    font-size: medium;
     transition: .25s;
+    border-radius: 5px;
 }
 
 .opcao p:hover {
