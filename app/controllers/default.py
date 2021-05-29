@@ -45,6 +45,7 @@ def cadastro():
 @app.route('/usuario')
 def usuario():
     if session:
+        print(User.query.all())
         return render_template('usuario.html')
     else:
         return redirect(url_for('index'))
@@ -138,3 +139,13 @@ def forcado():
         db.session.add(user)
         db.session.commit()
     return render_template('forcado.html')
+
+
+@app.route('/usuario/apagar-banco', methods=['GET', 'POST'])
+def apagarBanco():
+    if request.method == 'POST':
+        grupos = User.query.all()
+        for grupo in grupos:
+            db.session.delete(grupo)
+            db.session.commit()
+    return render_template('apagar.html')
