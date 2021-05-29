@@ -49,3 +49,4 @@ class Relatorio(db.Model):
 
     def __repr__(self):
         return f"<Relatorios {self.membro_nome}>"
+
