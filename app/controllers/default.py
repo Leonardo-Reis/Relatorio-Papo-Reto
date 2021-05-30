@@ -77,8 +77,10 @@ def novomembro():
 @app.route('/usuario/grupo')
 def grupo():
     if session:
-        usuario = User.query.filter_by(nome=session['nome']).first()
-        return render_template('grupo.html', usuario=usuario)
+        membros = User.query.filter_by(nome=session['nome']).first().membros
+        return render_template('grupo.html', variaveis=[membros, Relatorio])
+    else:
+        return redirect(url_for('index'))
 
 
 @app.route('/usuario/relatorio', methods=['POST', 'GET'])

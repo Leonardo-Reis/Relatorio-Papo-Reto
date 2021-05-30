@@ -9,25 +9,34 @@
 </head>
 <body>
     <main>
-        <table>
-            <caption>Seu grupo</caption>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% block content %}
-                    {% for membro in usuario.membros %}
+        {% block content %}
+            {% for membro in variaveis[0] %}
+                <table>
+                    {% set relatorios = variaveis[1] %}
+                    <caption>{{ membro.nome }}</caption>
+                    <thead>
                         <tr>
-                            <td>{{membro.nome.capitalize()}}</td>
-                            <td>{{membro.sobrenome.capitalize()}}</td>
+                            <th>Semana 1</th>
+                            <th>Semana 2</th>
+                            <th>Semana 3</th>
+                            <th>Semana 4</th>
                         </tr>
-                    {% endfor %}
-                {% endblock %}
-            </tbody>
-        </table>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {% for relatorio in relatorio_membro %}
+                            <td><textarea cols="30" rows="10">
+                                
+                            </textarea></td>
+                            <td><textarea cols="30" rows="10"></textarea></td>
+                            <td><textarea cols="30" rows="10"></textarea></td>
+                            <td><textarea cols="30" rows="10"></textarea></td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            {% endfor %}
+        {% endblock %}
     </main>
 </body>
 </html>

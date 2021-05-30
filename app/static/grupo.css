@@ -35,3 +35,9 @@ caption {
     font-weight:bolder;
     margin: 10px;
 }
+
+textarea {
+    width: 250px;
+    height: 100px;
+    resize: none
+}
