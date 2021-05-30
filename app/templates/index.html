@@ -14,11 +14,11 @@
             <h1>Login</h1>
             <div class="input">
                 <label>Nome</label>
-                <input type="text" name="nome" autocomplete="off" value="{{ session['nome'] if session}}">
+                <input type="text" name="nome" autocomplete="off" value="{{ session['nome'] if session}}" required>
             </div>
             <div class="input">
                 <label>Senha</label>
-                <input type="password" name="senha" value="{{ session['senha'] if session }}">
+                <input type="password" name="senha" value="{{ session['senha'] if session }}" required>
             </div>
             <div class="submit">
                 <input type="submit" value="Login">

@@ -18,12 +18,12 @@
                 {% for membro in membros %}
                     <div class="input">
                         <h2>{{ membro.nome.capitalize() }}</h2>
-                        <textarea name="{{ membro.nome }}" cols="30" rows="10" form="form"></textarea>
+                        <textarea name="{{ membro.nome }}" cols="30" rows="10" form="form" required></textarea>
                     </div>
                 {% endfor %}
                 <div class="input">
                     <label>Semana</label>
-                    <input type="number" name="semana" placeholder="1-5" max="5" min="0" style="text-align: center;">
+                    <input type="number" name="semana" placeholder="1-5" max="5" min="0" style="text-align: center;" required>
                 </div>
                 <div class="submit">
                     <input type="submit" value="Enviar">
