@@ -1,10 +1,10 @@
 from app import app, db
 from flask import request, render_template, session, redirect, url_for, flash
-from Lib.autentificacao import client
 from app.models.usuarios import User, Membro, Relatorio
-import pandas as pd
+# from Lib.autentificacao import client
+# import pandas as pd
 
-spreadsheets = client('credentials.json')
+# spreadsheets = client('credentials.json')
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -111,21 +111,21 @@ def logout():
         return redirect(url_for('index'))
 
 
-@app.route('/enviar', methods=['GET', 'POST'])
-def enviar():
-    if request.method == 'POST':
-        sp_nomes_pprt = spreadsheets.open('nomes-papo-reto')
-        ws_nomes_pprt = sp_nomes_pprt.worksheet('nomes')
-        df_nomes_pprt = pd.DataFrame(ws_nomes_pprt.get_all_records())
-
-        nome = request.form['nome'].capitalize().strip()
-        sobrenome = request.form['sobrenome'].capitalize().strip()
-        linha = {"nome": nome, "sobrenome": sobrenome}
-
-        df = df_nomes_pprt.append(linha, ignore_index=True)
-
-        ws_nomes_pprt.update([df.columns.values.tolist()] + df.values.tolist())
-    return render_template('enviar.html')
+#@app.route('/enviar', methods=['GET', 'POST'])
+#def enviar():
+#    if request.method == 'POST':
+#        sp_nomes_pprt = spreadsheets.open('nomes-papo-reto')
+#        ws_nomes_pprt = sp_nomes_pprt.worksheet('nomes')
+#        df_nomes_pprt = pd.DataFrame(ws_nomes_pprt.get_all_records())
+#
+#        nome = request.form['nome'].capitalize().strip()
+#        sobrenome = request.form['sobrenome'].capitalize().strip()
+#        linha = {"nome": nome, "sobrenome": sobrenome}
+#
+#        df = df_nomes_pprt.append(linha, ignore_index=True)
+#
+#        ws_nomes_pprt.update([df.columns.values.tolist()] + df.values.tolist())
+#    return render_template('enviar.html')
 
 
 @app.route('/cadastro-forcado', methods=['POST', 'GET'])

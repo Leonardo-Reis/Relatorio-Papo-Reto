@@ -4,7 +4,7 @@ from app import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=True)
-    senha = db.Column(db.String)
+    senha = db.Column(db.String(40))
     nivel_acesso = db.Column(db.Integer)
     membros = db.relationship('Membro', backref='user', lazy=True)
 
@@ -38,7 +38,7 @@ class Relatorio(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     membro_nome = db.Column(db.String(40), unique=False)
     semana = db.Column(db.Integer, unique=False)
-    relatorio = db.Column(db.String(), unique=False)
+    relatorio = db.Column(db.String(500), unique=False)
     membro_id = db.Column(db.Integer, db.ForeignKey('membro.id'))
 
     def __init__(self, membro_nome, semana, relatorio, membro_id):
@@ -49,4 +49,3 @@ class Relatorio(db.Model):
 
     def __repr__(self):
         return f"<Relatorios {self.membro_nome}>"
-
