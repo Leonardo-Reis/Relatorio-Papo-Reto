@@ -60,9 +60,8 @@ def novomembro():
             lider = User.query.filter_by(nome=session['nome']).first()
 
             lider_id = lider.id
-            lider_nome = lider.nome
 
-            novo_membro = Membro(nome=nome, sobrenome=sobrenome, lider_id=lider_id, lider_nome=lider_nome)
+            novo_membro = Membro(nome=nome, sobrenome=sobrenome, lider_id=lider_id)
 
             db.session.add(novo_membro)
             db.session.commit()
@@ -107,8 +106,9 @@ def relatorio():
 @app.route('/<usuario>')
 def retornaUser(usuario):
     user = User.query.filter_by(nome=usuario).first()
-    user_schema = UserSchema
-    output = user_schema.dump(user).data
+    user_schema = UserSchema()
+    output = user_schema.dump(user)
+    print(output['membros'])
     return jsonify({'user': output})
 
 
