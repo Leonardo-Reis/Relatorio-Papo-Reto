@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, render_template, session, redirect, url_for, flash, jsonify
-from app.models.usuarios import User, Membro, Relatorio, UserSchema, MembroSchema, RelatorioSchema
+from app.models.usuarios import User, Membro, Relatorio, UserSchema, MembroSchema
 # from Lib.autentificacao import client
 # import pandas as pd
 
@@ -101,6 +101,37 @@ def relatorio():
         return render_template('relatorio.html', membros=membros)
     else:
         return redirect(url_for('index'))
+
+
+@app.route('/api/<usuario>')
+def getbanco(usuario):
+    if session:
+        user = User.query.filter_by(nome=usuario).first()
+        user_schema = UserSchema()
+        output = user_schema.dump(user)
+        return jsonify({'user': output})
+    else:
+        return 'Login não realizado'
+
+
+@app.route('/api/<usuario>/<membroparam>')
+def getmembro(usuario=None, membroparam=None):
+    if session:
+        user = User.query.filter_by(nome=usuario).first()
+        membro_output = None
+
+        for membro in user.membros:
+            if membro.nome == membroparam:
+                membro_output = membro
+
+        if membro_output is not None:
+            membro_schema = MembroSchema()
+            output = membro_schema.dump(membro_output)
+            return output
+        else:
+            return 'O membro especificado para esse lider de grupo não existe ou não foi registrado.'
+    else:
+        return 'Login não realizado'
 
 
 @app.route('/<usuario>')
