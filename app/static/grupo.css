@@ -39,5 +39,6 @@ caption {
 textarea {
     width: 250px;
     height: 100px;
+    padding: 0;
     resize: none
 }

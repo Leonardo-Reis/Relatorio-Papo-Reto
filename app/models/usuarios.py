@@ -1,7 +1,9 @@
-from app import db
+from app import db, ma
 
 
 class User(db.Model):
+    __tablename__ = 'user'
+
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=True)
     senha = db.Column(db.String(40))
@@ -17,7 +19,15 @@ class User(db.Model):
         return f"<User {self.nome}>"
 
 
+class UserSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = User
+        load_instance = True
+
+
 class Membro(db.Model):
+    __tablename__ = 'membro'
+
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40), unique=False)
     sobrenome = db.Column(db.String(40), unique=False)
@@ -34,11 +44,19 @@ class Membro(db.Model):
         return f"<Membro {self.nome}>"
 
 
+class MembroSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Membro
+        load_instance = True
+
+
 class Relatorio(db.Model):
+    __tablename__ = 'relatorio'
+
     id = db.Column(db.Integer, primary_key=True)
     membro_nome = db.Column(db.String(40), unique=False)
     semana = db.Column(db.Integer, unique=False)
-    relatorio = db.Column(db.String(500), unique=False)
+    relatorio = db.Column(db.String(500), default='Relatorio dessa semana não foi enviado', unique=False)
     membro_id = db.Column(db.Integer, db.ForeignKey('membro.id'))
 
     def __init__(self, membro_nome, semana, relatorio, membro_id):
@@ -49,3 +67,9 @@ class Relatorio(db.Model):
 
     def __repr__(self):
         return f"<Relatorios {self.membro_nome}>"
+
+
+class RelatorioSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Relatorio
+        load_instance = True

@@ -10,9 +10,9 @@
 <body>
     <main>
         {% block content %}
+        {% set Relatorio = variaveis[1] %}
             {% for membro in variaveis[0] %}
                 <table>
-                    {% set relatorios = variaveis[1] %}
                     <caption>{{ membro.nome }}</caption>
                     <thead>
                         <tr>
@@ -23,16 +23,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {% for relatorio in relatorio_membro %}
-                            <td><textarea cols="30" rows="10">
-                                
-                            </textarea></td>
-                            <td><textarea cols="30" rows="10"></textarea></td>
-                            <td><textarea cols="30" rows="10"></textarea></td>
-                            <td><textarea cols="30" rows="10"></textarea></td>
-                            {% endfor %}
-                        </tr>
+                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
+                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
+                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
+                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
                     </tbody>
                 </table>
             {% endfor %}

@@ -1,6 +1,6 @@
 from app import app, db
-from flask import request, render_template, session, redirect, url_for, flash
-from app.models.usuarios import User, Membro, Relatorio
+from flask import request, render_template, session, redirect, url_for, flash, jsonify
+from app.models.usuarios import User, Membro, Relatorio, UserSchema, MembroSchema, RelatorioSchema
 # from Lib.autentificacao import client
 # import pandas as pd
 
@@ -104,6 +104,14 @@ def relatorio():
         return redirect(url_for('index'))
 
 
+@app.route('/<usuario>')
+def retornaUser(usuario):
+    user = User.query.filter_by(nome=usuario).first()
+    user_schema = UserSchema
+    output = user_schema.dump(user).data
+    return jsonify({'user': output})
+
+
 @app.route('/logout')
 def logout():
     if session:
@@ -113,8 +121,8 @@ def logout():
         return redirect(url_for('index'))
 
 
-#@app.route('/enviar', methods=['GET', 'POST'])
-#def enviar():
+# @app.route('/enviar', methods=['GET', 'POST'])
+# def enviar():
 #    if request.method == 'POST':
 #        sp_nomes_pprt = spreadsheets.open('nomes-papo-reto')
 #        ws_nomes_pprt = sp_nomes_pprt.worksheet('nomes')
@@ -146,8 +154,6 @@ def forcado():
 @app.route('/usuario/apagar-banco', methods=['GET', 'POST'])
 def apagarBanco():
     if request.method == 'POST':
-        grupos = User.query.all()
-        for grupo in grupos:
-            db.session.delete(grupo)
-            db.session.commit()
+        db.drop_all()
+        db.create_all()
     return render_template('apagar.html')
