@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/grupo.css">
+    <link rel="stylesheet" href="../static/grupo/grupo.css">
     <title>Grupo</title>
 </head>
 <body>
+    <div class="session" style="display: none;">{{ session['nome'] }}</div>
     <main>
         {% block content %}
         {% set Relatorio = variaveis[1] %}
