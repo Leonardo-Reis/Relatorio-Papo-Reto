@@ -9,28 +9,9 @@
 </head>
 <body>
     <div class="session" style="display: none;">{{ session['nome'] }}</div>
-    <main>
+    <main id="main">
         {% block content %}
-        {% set Relatorio = variaveis[1] %}
-            {% for membro in variaveis[0] %}
-                <table>
-                    <caption>{{ membro.nome }}</caption>
-                    <thead>
-                        <tr>
-                            <th>Semana 1</th>
-                            <th>Semana 2</th>
-                            <th>Semana 3</th>
-                            <th>Semana 4</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
-                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
-                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
-                        <td><textarea cols="30" rows="10" class="relatorio"></textarea></td>
-                    </tbody>
-                </table>
-            {% endfor %}
+        
         {% endblock %}
     </main>
     <script src="../static/grupo/grupo.js"></script>
