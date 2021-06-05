@@ -12,9 +12,10 @@ main {
     background-color: white;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap:nowrap;
+    margin: 10vh auto;
+    width: 520px;
     border: solid 1px;
-    margin: 10% auto;
 }
 
 textarea {
@@ -26,5 +27,27 @@ textarea {
 
 .bloco-membro {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: solid 1px;
+}
+
+.bloco-membro h2 {
+    margin: 15px;
+
+}
+
+.bloco-semanas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.bloco-semana {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
