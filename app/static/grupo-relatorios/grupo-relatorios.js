@@ -1,7 +1,7 @@
 session_name = document.querySelector('.session').textContent
 main = document.querySelector('#main')
 
-const url = `http://192.168.0.33:5000/api/${session_name}`
+const url = `https://relatorio-jqv.herokuapp.com/api/${session_name}`
 
 const request = new XMLHttpRequest()
 

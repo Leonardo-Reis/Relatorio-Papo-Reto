@@ -17,6 +17,7 @@ def index():
             if check_nome.senha == senha:
                 session['nome'] = nome
                 session['senha'] = senha
+                session['id'] = check_nome.id
                 return redirect(url_for('usuario'))
             else:
                 flash('Senha incorreta')
@@ -75,6 +76,12 @@ def novomembro():
 
 @app.route('/usuario/grupo')
 def grupo():
+    membros = User.query.filter_by(nome=session['nome']).first().membros
+    return render_template('grupo.html', membros=membros)
+
+
+@app.route('/usuario/grupo/relatorios')
+def grupo_relatorios():
     if session:
         membros = User.query.filter_by(nome=session['nome']).first().membros
         return render_template('grupo-relatorios.html', variaveis=[membros, Relatorio])

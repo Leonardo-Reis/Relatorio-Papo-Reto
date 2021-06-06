@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgrey;
+}
+
+main {
+    background-color: white;
+    margin: 10vh auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    border: solid 1px;
+    padding: 20px;
+}
+
+table, th, td {
+    border: solid 1px;
+    text-align: center;
+    padding: 5px;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-size: large;
+    font-weight: bolder;
+}
