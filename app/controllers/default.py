@@ -138,7 +138,7 @@ def getmembro(usuario=None, membroparam=None):
         else:
             return 'O membro especificado para esse lider de grupo não existe ou não foi registrado.'
     else:
-        return 'Login não realizado'
+        return 'Faça login'
 
 
 @app.route('/<usuario>')
