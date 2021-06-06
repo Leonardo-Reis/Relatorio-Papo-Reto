@@ -77,7 +77,7 @@ def novomembro():
 def grupo():
     if session:
         membros = User.query.filter_by(nome=session['nome']).first().membros
-        return render_template('grupo.html', variaveis=[membros, Relatorio])
+        return render_template('grupo-relatorios.html', variaveis=[membros, Relatorio])
     else:
         return redirect(url_for('index'))
 
