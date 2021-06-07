@@ -44,6 +44,7 @@ for (membro of lider.output.membros) {
             if (relatorio.semana == semana && contador_relatorios_nvazios == 0) {
                 contador_relatorios_nvazios += 1
                 let textarea = document.createElement('textarea')
+                textarea.readOnly = true
                 textarea.textContent = relatorio.relatorio
                 
                 bloco_semana.appendChild(textarea)
@@ -52,6 +53,7 @@ for (membro of lider.output.membros) {
         if (contador_relatorios_nvazios == 0) {
             let textarea = document.createElement('textarea')
             textarea.textContent = 'Sem relatorio para essa semana'
+            textarea.readOnly = true
             textarea.style.backgroundColor = 'lightgray'
             
             bloco_semana.appendChild(textarea)

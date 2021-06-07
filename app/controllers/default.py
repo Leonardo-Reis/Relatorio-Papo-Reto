@@ -14,6 +14,7 @@ def index():
                 session['nome'] = nome
                 session['senha'] = senha
                 session['id'] = check_nome.id
+                session['nivel-acesso'] = check_nome.nivel_acesso
                 return redirect(url_for('usuario'))
             else:
                 flash('Senha incorreta')
@@ -24,7 +25,7 @@ def index():
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
-    if session:
+    if session and session['nivel-acesso'] == 3:
         if request.method == 'POST':
             nome = request.form['nome'].strip().lower()
             senha = request.form['senha'].strip()
@@ -35,7 +36,10 @@ def cadastro():
             db.session.commit()
 
         return render_template('cadastro.html')
-    else:
+    elif session and session['nivel-acesso'] != 3:
+
+        return redirect(url_for('usuario'))
+    elif not session:
         return redirect(url_for('index'))
 
 

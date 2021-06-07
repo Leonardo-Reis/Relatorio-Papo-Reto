@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/usuario.css">
+    <link rel="shortcut icon" href="../static/LOGO JQV.PNG" type="image/x-icon">
     <title>Usuario</title>
 </head>
 <body>
     {% block content %}
     <main>
         <div class="titulo">
-            <h1>Seja bem vindo, {{session["nome"] if session}}!</h1>
+            <h1>Seja bem vindo, {{session["nome"].capitalize() if session}}!</h1>
         </div>
         <div class="opcoes">
-            <a href="/cadastro">
-                <div class="opcao">
-                    <p>Cadastrar novo lider de grupo</p>
-                </div>
-            </a>
+            {% if session['nivel-acesso'] == 3 %}
+                <a href="/cadastro">
+                    <div class="opcao">
+                        <p>Cadastrar novo usuario</p>
+                    </div>
+                </a>
+            {% endif %}
             <a href="/usuario/grupo/relatorios">
                 <div class="opcao">
                     <p>Ver relatorios semanais</p>
@@ -33,7 +36,7 @@
                 </div>
             </a>
             <div class="opcao">
-                <a href="/usuario/grupo">Ver o membros do grupo</a>
+                <a href="/usuario/grupo">Ver os membros do seu grupo</a>
             </div>
         </div>
     </main>
