@@ -10,4 +10,4 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from app.controllers import default
+from app.controllers import default, api, danger
