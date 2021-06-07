@@ -1,16 +1,13 @@
 session_name = document.querySelector('.session').textContent
 main = document.querySelector('#main')
 
-const url = `relatorio-jqv.herokuapp.com/api/${session_name}`
+const url = `/api/${session_name}`
+
+console.log(url)
 
 const request = new XMLHttpRequest()
 
 request.open('GET', url, false)
-
-request.setRequestHeader("Access-Control-Allow-Origin", '*')
-request.setRequestHeader('Access-Control-Allow-Methods', '*')
-request.setRequestHeader('Access-Control-Allow-Headers', '*')
-
 request.send()
 
 const lider_string = request.responseText

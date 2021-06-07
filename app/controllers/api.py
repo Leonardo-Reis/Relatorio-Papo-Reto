@@ -29,7 +29,7 @@ def retornaUser(usuario):
         user = User.query.filter_by(nome=usuario).first()
         user_schema = UserSchema()
         output = user_schema.dump(user)
-        return jsonify({'user': output})
+        return jsonify({'output': output})
 
     else:
         return 'Login não realizado'
