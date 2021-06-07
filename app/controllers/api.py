@@ -23,9 +23,13 @@ def getmembro(usuario=None, membroparam=None):
         return 'Faça login'
 
 
-@app.route('/<usuario>')
+@app.route('/api/<usuario>')
 def retornaUser(usuario):
-    user = User.query.filter_by(nome=usuario).first()
-    user_schema = UserSchema()
-    output = user_schema.dump(user)
-    return jsonify({'user': output})
+    if session:
+        user = User.query.filter_by(nome=usuario).first()
+        user_schema = UserSchema()
+        output = user_schema.dump(user)
+        return jsonify({'user': output})
+
+    else:
+        return 'Login não realizado'
