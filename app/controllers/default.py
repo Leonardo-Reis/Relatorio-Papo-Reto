@@ -1,6 +1,6 @@
 from app import app, db
 from flask import request, render_template, session, redirect, url_for, flash
-from app.models.usuarios import User, Membro, Relatorio, UserSchema
+from app.models.usuarios import User, Membro, Relatorio
 
 
 @app.route('/', methods=['GET', 'POST'])
