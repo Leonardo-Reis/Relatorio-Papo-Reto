@@ -67,8 +67,6 @@ def novomembro():
             db.session.add(novo_membro)
             db.session.commit()
 
-            print('foi')
-
         return render_template('novomembro.html')
     else:
         return redirect(url_for('index'))
