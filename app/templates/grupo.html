@@ -15,15 +15,15 @@
                 <caption>Membros</caption>
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
+                        <th><span>Nome</span></th>
+                        <th><span>Sobrenome</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for membro in membros %}
                         <tr>
-                            <td>{{ membro.nome.capitalize() }}</td>
-                            <td>{{ membro.sobrenome.capitalize() }}</td>
+                            <td><span>{{ membro.nome.capitalize() }}</span></td>
+                            <td><span>{{ membro.sobrenome.capitalize() }}</span></td>
                         </tr>
                     {% endfor %}
                 </tbody>

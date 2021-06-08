@@ -50,7 +50,7 @@ for (membro of lider.output.membros) {
             let textarea = document.createElement('textarea')
             textarea.textContent = 'Sem relatorio para essa semana'
             textarea.readOnly = true
-            textarea.style.backgroundColor = 'lightgray'
+            textarea.style.backgroundColor = 'background-color: rgba(0,0,0,0.42);'
             
             bloco_semana.appendChild(textarea)
         }

@@ -5,17 +5,29 @@
 }
 
 body {
-    background-color: lightgrey;
+    background-color: rgb(71, 71, 71);
+}
+
+h1, td span, th span, caption {
+    color: rgb(152, 159, 255);
 }
 
 main {
-    background-color: white;
-    margin: 10vh auto;
+    background-color: rgb(46, 46, 46);
+
+    box-shadow: 3px 2px 34px 4px rgba(0,0,0,0.42);
+    -webkit-box-shadow: 3px 2px 34px 4px rgba(0,0,0,0.42);
+    -moz-box-shadow: 3px 2px 34px 4px rgba(0,0,0,0.42);
+
+    border: solid 1px rgb(52, 37, 255);
+    border-radius: 10px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 350px;
-    border: solid 1px;
+    
+    margin: 10vh auto;
+    width: 300px;
     padding: 20px;
 }
 
@@ -23,10 +35,19 @@ table, th, td {
     border: solid 1px;
     text-align: center;
     padding: 5px;
+    color: rgb(52, 37, 255);
+}
+
+th, td {
+    background-color: black;
+}
+
+table {
+    background-color: rgb(22, 22, 22);
 }
 
 caption {
     margin-bottom: 10px;
-    font-size: large;
+    font-size: x-large;
     font-weight: bolder;
 }
