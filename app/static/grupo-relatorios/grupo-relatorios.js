@@ -12,11 +12,7 @@ request.send()
 
 const lider_string = request.responseText
 
-console.log(lider_string)
-
 const lider = JSON.parse(lider_string)
-
-console.log(lider)
 
 for (membro of lider.output.membros) {
     var bloco_membro = document.createElement('div')

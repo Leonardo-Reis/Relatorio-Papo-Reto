@@ -53,13 +53,20 @@ def enviar():
 
             df_nomes_pprt = pd.DataFrame(ws_nomes_pprt.get_all_records())
 
-            nome = request.form['nome'].capitalize().strip()
-            sobrenome = request.form['sobrenome'].capitalize().strip()
+            for membro in lider.membros:
+                semanas = []
+                for semana in range(0, 4):
+                    contador_relatorios_nvazios = 0
+                    for relatorio in membro.relatorios:
+                        if relatorio.semana == semana and contador_relatorios_nvazios == 0:
+                            contador_relatorios_nvazios += 1
+                            semanas.append(relatorio.relatorio)
+                    if contador_relatorios_nvazios > 0:
+                        semanas.append('Sem relatorio para essa semana')
 
-            linha = {"Nome": f'{nome} {sobrenome}', 'Semana 1': '', 'Semana 2': '', 'Semana 3': '', 'Semana 4': ''}
-
-            df = df_nomes_pprt.append(linha, ignore_index=True)
-            ws_nomes_pprt.update([df.columns.values.tolist()] + df.values.tolist())
+                linha = {"Nome": f'{membro.nome.capitalize()}', 'Semana 1': semanas[0], 'Semana 2': semanas[1], 'Semana 3': semanas[2], 'Semana 4': semanas[3]}
+                df = df_nomes_pprt.append(linha, ignore_index=True)
+                ws_nomes_pprt.update([df.columns.values.tolist()] + df.values.tolist())
 
         return render_template('enviar.html')
     else:
