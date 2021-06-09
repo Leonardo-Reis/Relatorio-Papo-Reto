@@ -9,17 +9,18 @@
     <title>Novo Membro</title>
 </head>
 <body>
+    <div style="display: none;" id="lider">{{ session.nome }}</div>
     <main>
         <h1>Novo membro</h1>
-        <form method="post">
+        <form method="post" id="form">
             <div class="inputs">
                 <div class="input">
                     <label>Nome</label>
-                    <input type="text" name="nome" required>
+                    <input type="text" name="nome" required autocomplete="off" id="nome">
                 </div>
                 <div class="input">
                     <label>Sobrenome</label>
-                    <input type="text" name="sobrenome" required>
+                    <input type="text" name="sobrenome" required autocomplete="off" id="sobrenome">
                 </div>
                 <div class="input">
                     <input type="submit" value="Cadastrar">
@@ -27,5 +28,41 @@
             </div>
         </form>
     </main>
+    <script>
+        const form = document.querySelector('#form')
+        const lider = document.querySelector('#lider').textContent
+        const url = window.location.origin
+        
+        form.addEventListener('submit', (event) => {
+
+            const request = new XMLHttpRequest()
+            request.open('GET', url + `/api/${lider}`, false)
+            request.send()
+    
+            const liderString = request.responseText
+            const liderJson = JSON.parse(liderString)
+
+            const nome = document.querySelector('#nome').value
+            const sobrenome = document.querySelector('#sobrenome').value
+            const nomeCompletoSubmit = `${nome} ${sobrenome}`
+
+            for (membro of liderJson.output.membros)
+                var nomeCompleto = `${membro.nome} ${membro.sobrenome}`
+                console.log(nomeCompletoSubmit)
+                console.log(nomeCompleto)
+                if (nomeCompletoSubmit === nomeCompleto) {
+                    resposta = window.confirm('Já existe um membro no grupo com esse nome. Deseja cadastrar mesmo assim?')
+                    if (resposta === false) {
+                        event.preventDefault()
+                    } else {
+                        window.alert('Cadastro realizado!')
+                        window.open(url + '/usuario')
+                    }
+                } else {
+                    window.alert('Cadastro realizado!')
+                    window.open(url + '/usuario')
+                }
+        })
+    </script>
 </body>
 </html>
