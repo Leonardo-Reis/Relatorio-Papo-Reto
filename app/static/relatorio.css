@@ -79,3 +79,7 @@ input[type=number] {
     border: solid 1px rgb(52, 37, 255);
     background-color: rgba(0,0,0,0.42);
 } 
+
+.nomem h1 {
+    text-align: center;
+}

@@ -11,26 +11,32 @@
 <body>
     <main>
         {% block content %}
-        <div class="titulo">
-            <h1>Enviar Relatorio</h1>
-        </div>
-        <div class="form">
-            <form method="post" id="form">
-                {% for membro in membros %}
+        {% if membros != [] %}
+            <div class="titulo">
+                <h1>Enviar Relatorio</h1>
+            </div>
+            <div class="form">
+                <form method="post" id="form">
+                    {% for membro in membros %}
+                        <div class="input">
+                            <h2>{{ membro.nome.capitalize() }}</h2>
+                            <textarea name="{{ membro.nome }}" cols="30" rows="10" form="form" required></textarea>
+                        </div>
+                    {% endfor %}
                     <div class="input">
-                        <h2>{{ membro.nome.capitalize() }}</h2>
-                        <textarea name="{{ membro.nome }}" cols="30" rows="10" form="form" required></textarea>
+                        <label>Semana</label>
+                        <input type="number" name="semana" placeholder="1-5" max="5" min="0" style="text-align: center;" required>
                     </div>
-                {% endfor %}
-                <div class="input">
-                    <label>Semana</label>
-                    <input type="number" name="semana" placeholder="1-5" max="5" min="0" style="text-align: center;" required>
-                </div>
-                <div class="submit">
-                    <input type="submit" value="Enviar">
-                </div>
-            </form>
+                    <div class="submit">
+                        <input type="submit" value="Enviar">
+                    </div>
+                </form>
+            </div>
+        {% else %}
+        <div class="nomem">
+            <h1>Esse grupo ainda não possui membros.</h1>
         </div>
+        {% endif %}
         {% endblock %}
     </main>
 </body>
