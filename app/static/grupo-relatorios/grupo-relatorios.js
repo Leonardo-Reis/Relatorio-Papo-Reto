@@ -13,7 +13,7 @@ const lider_string = request.responseText
 const lider = JSON.parse(lider_string)
 
 console.log(lider.membros)
-if (lider.membros) {
+if (lider.output.membros != undefined) {
 
     for (membro of lider.output.membros) {
         var bloco_membro = document.createElement('div')
@@ -51,6 +51,7 @@ if (lider.membros) {
                 let textarea = document.createElement('textarea')
                 textarea.textContent = 'Sem relatorio para essa semana'
                 textarea.readOnly = true
+                textarea.style.color = 'red'
                 textarea.style.backgroundColor = 'background-color: rgba(0,0,0,0.42);'
                 
                 bloco_semana.appendChild(textarea)
