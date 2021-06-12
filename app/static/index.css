@@ -63,6 +63,7 @@ input[type=password]:focus {
 
 input {
     font-weight: 300;
+    outline: 0;
 }
 
 p {
