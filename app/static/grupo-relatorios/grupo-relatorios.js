@@ -12,8 +12,8 @@ const lider_string = request.responseText
 
 const lider = JSON.parse(lider_string)
 
-console.log(lider.membros)
-if (lider.output.membros != undefined) {
+console.log(lider.output.membros)
+if (lider.output.membros.length != 0) {
 
     for (membro of lider.output.membros) {
         var bloco_membro = document.createElement('div')

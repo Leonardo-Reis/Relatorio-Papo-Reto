@@ -10,25 +10,31 @@
 </head>
 <body>
     {% block content%}
-        <main>
-            <table>
-                <caption>Membros</caption>
-                <thead>
-                    <tr>
-                        <th><span>Nome</span></th>
-                        <th><span>Sobrenome</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for membro in membros %}
+        {% if membrps != [] %} 
+            <main>
+                <table>
+                    <caption>Membros</caption>
+                    <thead>
                         <tr>
-                            <td><span>{{ membro.nome.capitalize() }}</span></td>
-                            <td><span>{{ membro.sobrenome.capitalize() }}</span></td>
+                            <th><span>Nome</span></th>
+                            <th><span>Sobrenome</span></th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </main>
+                    </thead>
+                    <tbody>
+                        {% for membro in membros %}
+                            <tr>
+                                <td><span>{{ membro.nome.capitalize() }}</span></td>
+                                <td><span>{{ membro.sobrenome.capitalize() }}</span></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        {% else %}
+            <div class="nomem">
+                <h1>Esse grupo não possui membros</h1>
+            </div>
+        {% endif %}
     {% endblock %}
 </body>
 </html>
