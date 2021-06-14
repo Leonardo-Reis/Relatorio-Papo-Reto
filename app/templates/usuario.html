@@ -11,15 +11,6 @@
 </head>
 <body>
     {% block content %}
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/usuario/grupo/relatorios">Ver Relatorios</a></li>
-                <li><a href="/usuario">Home</a></li>
-                <li><a href="/usuario/grupo">Ver Membros</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         <div class="titulo">
             <h1>Seja bem vindo, {{session["nome"].capitalize() if session}}!</h1>
