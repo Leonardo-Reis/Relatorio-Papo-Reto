@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 body {
@@ -18,10 +19,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     width: 350px;
-    margin: 10% auto;
+    margin: 8vh auto;
 
     border: solid 1px rgb(52, 37, 255);
     border-radius: 10px;

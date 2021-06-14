@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/usuario.css">
     <link rel="shortcut icon" href="../static/LOGO JQV.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="../static/navbar.css">
     <title>Usuario</title>
 </head>
 <body>
     {% block content %}
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/usuario/grupo/relatorios">Ver Relatorios</a></li>
+                <li><a href="/usuario">Home</a></li>
+                <li><a href="/usuario/grupo">Ver Membros</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <div class="titulo">
             <h1>Seja bem vindo, {{session["nome"].capitalize() if session}}!</h1>

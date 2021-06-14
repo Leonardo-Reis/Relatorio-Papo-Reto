@@ -6,10 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/novomembro.css">
     <link rel="shortcut icon" href="../static/LOGO JQV.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="../static/navbar.css">
     <title>Novo Membro</title>
 </head>
 <body>
     <div style="display: none;" id="lider">{{ session.nome }}</div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/usuario/grupo/relatorios">Ver Relatorios</a></li>
+                <li><a href="/usuario">Home</a></li>
+                <li><a href="/usuario/grupo">Ver Membros</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <h1>Novo membro</h1>
         <form method="post" id="form">

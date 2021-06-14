@@ -6,6 +6,7 @@
     font-weight: 300;
     text-decoration: none;
     color: black;
+    overflow-x: hidden;
 }
 
 body {
@@ -22,7 +23,7 @@ main {
     align-items: center;
 
     width: 325px;
-    margin: 10vh auto;
+    margin: 8vh auto;
     text-align: center;
 
     background-color: rgb(46, 46, 46);

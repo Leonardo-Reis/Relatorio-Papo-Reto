@@ -6,9 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/relatorio.css">
     <link rel="shortcut icon" href="../static/LOGO JQV.PNG" type="image/x-icon">
+    <link rel="stylesheet" href="../static/navbar.css">
     <title>Enviar Relatorio</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/usuario/grupo/relatorios">Ver Relatorios</a></li>
+                <li><a href="/usuario">Home</a></li>
+                <li><a href="/usuario/grupo">Ver Membros</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         {% block content %}
         {% if membros != [] %}
