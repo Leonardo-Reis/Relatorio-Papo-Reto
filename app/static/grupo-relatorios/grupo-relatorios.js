@@ -1,5 +1,5 @@
 const session_name = document.querySelector('.session').textContent
-var main = document.querySelector('#main')
+var main = document.querySelector('.main')
 
 const url = `/api/${session_name}`
 

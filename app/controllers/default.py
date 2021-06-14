@@ -81,8 +81,7 @@ def grupo():
 @app.route('/usuario/grupo/relatorios')
 def grupo_relatorios():
     if session:
-        membros = User.query.filter_by(nome=session['nome']).first().membros
-        return render_template('grupo-relatorios.html', variaveis=[membros, Relatorio])
+        return render_template('grupo-relatorios.html')
     else:
         return redirect(url_for('index'))
 
