@@ -19,7 +19,7 @@ h1, label, input {
     border: solid 1px rgb(52, 37, 255);
     border-radius: 10px;
     width: 300px;
-    margin: 15% auto;
+    margin: 15vh auto;
     padding: 15px;
     background-color: rgb(46, 46, 46);
     box-shadow: 3px 2px 34px 4px rgba(0,0,0,0.42);
