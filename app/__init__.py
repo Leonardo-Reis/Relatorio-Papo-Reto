@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 app.secret_key = 'secret-jqv'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://fYrhjkNMiq:moyEAJnGfM@remotemysql.com:3306/fYrhjkNMiq'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://sql10421104:iIenhXWyXb@sql10.freemysqlhosting.net:3306/sql10421104'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 db = SQLAlchemy(app)

@@ -92,4 +92,3 @@ class UserSchema(ma.SQLAlchemyAutoSchema):
     nivel_acesso = ma.auto_field()
 
     membros = ma.Nested(MembroSchema, many=True)
-
